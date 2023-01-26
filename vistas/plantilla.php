@@ -7,7 +7,7 @@ include('includes/header.php');
 function getUsers(){
     $.ajax({
         type: 'POST',
-        url: 'userAction.php',
+        url: 'ajax/ajax.php',
         data: 'action_type=view',
         success:function(html){
             $('#userData').html(html);
@@ -30,9 +30,10 @@ function userAction(type, id){
         userData = 'action_type='+type+'&id='+id;
     }
     frmElement.find('.statusMsg').html('');
+    alert(userData);
     $.ajax({
         type: 'POST',
-        url: 'userAction.php',
+        url: 'ajax/ajax.php',
         dataType: 'JSON',
         data: userData,
         beforeSend: function(){
@@ -55,7 +56,7 @@ function userAction(type, id){
 function editUser(id){
     $.ajax({
         type: 'POST',
-        url: 'userAction.php',
+        url: 'ajax/ajax.php',
         dataType: 'JSON',
         data: 'action_type=data&id='+id,
         success:function(data){
